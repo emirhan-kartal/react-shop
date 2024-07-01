@@ -6,11 +6,34 @@
   height: 40vmin;
   pointer-events: none;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+ul,li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+abbr {
+  text-decoration:none;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 0;
+  margin:0;
+}
+
+.box {
+  height: 350px;
+  background-color: red;
+  border: 2px solid black;
+
 }
 
 .App-header {
