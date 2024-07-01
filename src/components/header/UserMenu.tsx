@@ -6,13 +6,12 @@ import {
     MenuItem,
     Typography,
     Box,
-    Card,
 } from "@mui/material";
 import React, { useState } from "react";
 
 export default function UserMenu() {
-    const [anchorElUser, setAnchorElUser] = useState(null);
-    const handleOpenUserMenu = (event) => {
+    const [anchorElUser, setAnchorElUser] = useState<null | Element>(null);
+    const handleOpenUserMenu = (event:React.MouseEvent) => {
         setAnchorElUser(event.currentTarget);
     };
     const handleCloseUserMenu = () => {

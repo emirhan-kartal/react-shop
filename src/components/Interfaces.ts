@@ -15,12 +15,15 @@ export interface Product {
     specialFilterProps: SpecialFilterProps;
     date: string;
 }
+
 export interface ProductInfo {
+    [key: string]: string | Review[] | undefined;
     details: string;
     reviews: Review[];
     shipping: string;
     returns: string;
 }
+
 export interface Review {
     id: string;
     name: string;
@@ -30,10 +33,12 @@ export interface Review {
 }
 
 export interface SpecialFilterProps {
+    [key: string]:string|undefined;
     brand?: string;
-    gender?: "male" | "female";
+    gender?: "male" | "female" |string;
     color?: string;
     size?: string;
+
 }
 export interface ProductCategory {
     name: string;

@@ -1,4 +1,4 @@
-import { Grid, ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import config from "../components/Config";
 import ProductCard from "../components/product/ProductCard";
 import React from "react";

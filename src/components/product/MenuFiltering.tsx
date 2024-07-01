@@ -11,10 +11,15 @@ const Transition = React.forwardRef(function Transition(
 ) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function MenuFiltering({ setOpen, open }) {
+interface MenuFilteringProps {
+    setOpen: React.Dispatch<React.SetStateAction<number>>;
+    open: boolean;
+}
+
+export default function MenuFiltering({ setOpen, open }: MenuFilteringProps) {
     const [expandedAccordion, setExpandedAccordion] = useState<number>(-1);
 
-    const filterOptions = ["Advantages","Color", "Size", "Price", "Brand"];
+    const filterOptions = ["Advantages", "Color", "Size", "Price", "Brand"];
 
     return (
         <Dialog fullScreen open={open} TransitionComponent={Transition}>

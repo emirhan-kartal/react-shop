@@ -102,6 +102,7 @@ export default function BannerSlider({
             clearInterval(interval);
             window.removeEventListener("scroll", (e) => handleScroll(e));
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

@@ -8,9 +8,19 @@ function a11yProps(index: number) {
         "aria-controls": `simple-tabpanel-${index}`,
     };
 }
+interface CategoryContainerProps {
+    category: string;
+    setCategory: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export default function CategoryContainer({ category, setCategory }) {
-    const handleChange = (event, newValue) => {
+export default function CategoryContainer({
+    category,
+    setCategory,
+}: CategoryContainerProps) {
+    const handleChange = (
+        event: React.FormEvent,
+        newValue: string
+    ) => {
         setCategory(newValue);
     };
     return (
@@ -47,7 +57,7 @@ export default function CategoryContainer({ category, setCategory }) {
                             sx={{
                                 fontSize: 10,
                                 padding: 0,
-                                margin:0
+                                margin: 0,
                             }}
                             {...a11yProps(index + 1)}
                             onClick={() => setCategory(category)}

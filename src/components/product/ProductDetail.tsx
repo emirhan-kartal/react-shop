@@ -51,7 +51,7 @@ export default function ProductDetail({ product, isMdUp }: ProductDetailProps) {
                             key={index}
                             index={index}
                             value={value}
-                            markdownContent={product.productInfo[key]}
+                            markdownContent={product.productInfo[key] as string}
                         />
                     );
             })}

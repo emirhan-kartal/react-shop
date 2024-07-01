@@ -4,7 +4,9 @@ import config from "../../components/Config";
 import { ProductCardProps } from "../../components/product/ProductCard";
 
 const initialState: State = {
-    cart: [{ productInstance: config.products["1"], count: 1 }] as ProductCardProps[],
+    cart: [
+        { productInstance: config.products["1"], count: 1 },
+    ] as ProductCardProps[],
 };
 
 const cartSlice = createSlice({
@@ -22,7 +24,6 @@ const cartSlice = createSlice({
                         : product
                 );
             } else {
-
                 state.cart = [
                     ...state.cart,
                     {
@@ -40,7 +41,10 @@ const cartSlice = createSlice({
         removeReduce: (state, action: PayloadAction<string>) => {
             const product = state.cart
                 .map((product) => {
-                    if (product.productInstance.id === action.payload && product.count! > 0) {
+                    if (
+                        product.productInstance.id === action.payload &&
+                        product.count! > 0
+                    ) {
                         return { ...product, count: product.count! - 1 };
                     } else {
                         return product;

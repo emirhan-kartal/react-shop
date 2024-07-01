@@ -16,8 +16,8 @@ import { selectCart } from "../../redux/reducers/cartSlice";
 
 export default function CartPopUp() {
     const cart = useSelector(selectCart);
-    const [anchorElCart, setAnchorElCart] = React.useState(null);
-    const handleOpenCartMenu = (event) => {
+    const [anchorElCart, setAnchorElCart] = React.useState<null | Element>(null);
+    const handleOpenCartMenu = (event:React.MouseEvent) => {
         setAnchorElCart(event.currentTarget);
     };
     const handleCloseCartMenu = () => {

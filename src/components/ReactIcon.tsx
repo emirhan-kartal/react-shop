@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Box } from "@mui/material";
 
 interface ReactIconProps {
-    actionToCall: (e) => void;
+    actionToCall: (e: React.MouseEvent) => void;
     iconName: string;
     sx?: object;
 }

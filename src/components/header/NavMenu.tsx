@@ -23,7 +23,7 @@ export default function NavMenu() {
         setAnchorElNav(null);
     };
 
-    const pageLinks = {
+    const pageLinks:{[key:string]:string} = {
         Home: "/",
         About: "/about",
         Services: "/services",

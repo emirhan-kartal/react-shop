@@ -1,5 +1,5 @@
 import { CardMedia, Skeleton } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 interface SkeletonAnimationProps {
     children: React.ReactNode;
@@ -23,7 +23,6 @@ export default function SkeletonAnimation({
     loaded,
     callback,
 }: SkeletonAnimationProps) {
-    const ref = useRef<HTMLImageElement>(null);
     const Child = React.Children.only(children);
     if (React.isValidElement(Child) === false) {
         throw new Error("SkeletonAnimation only accepts a single child");
@@ -49,6 +48,7 @@ export default function SkeletonAnimation({
             if (callback) callback();
         }, 2000);
     };
+    const Component = Child.type;
     return (
         <>
             {willBeLoadedLast ? (
@@ -64,12 +64,12 @@ export default function SkeletonAnimation({
                     {clonedChildren !== null ? clonedChildren : undefined}
                 </CardMedia>
             ) : (
-                <Child.type
+                <Component
                     {...Child.props}
                     sx={{ ...props.sx, display: loaded ? display : "none" }}
                 >
                     {clonedChildren !== null ? clonedChildren : undefined}
-                </Child.type>
+                </Component>
             )}
             {!loaded && (
                 <Skeleton

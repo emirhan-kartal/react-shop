@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React from "react";
 
-export default function ProductContainer({ children }) {
+export default function ProductContainer({ children }: { children:React.ReactNode}) {
 
     return (
         <Grid

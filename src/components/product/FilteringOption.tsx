@@ -11,7 +11,7 @@ import {
     Typography,
     styled,
 } from "@mui/material";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import config from "../Config";
 import { useParams, useSearchParams } from "react-router-dom";
 
@@ -20,7 +20,7 @@ interface FilteringOptionProps {
     optionsMarked: number;
     value: number;
     expandedAccordion: number; //999 = ALL
-    onClick: (e) => void;
+    onClick: (e: React.MouseEvent) => void;
 }
 
 export default function FilteringOption({
@@ -38,7 +38,7 @@ export default function FilteringOption({
     const StyledCheckBox = styled(Checkbox)({ p: 0, m: 0 });
     const routerParams = useParams();
 
-    const filterNameOptions = (filterName) => {
+    const filterNameOptions = (filterName: string): string[] => {
         const options: string[] = [];
         config.products
             .filter(
@@ -47,11 +47,9 @@ export default function FilteringOption({
                     product.category.toLocaleLowerCase()
             )
             .forEach((product) => {
-                if (
-                    product.specialFilterProps.hasOwnProperty(filterName) &&
-                    !options.includes(product.specialFilterProps[filterName])
-                ) {
-                    options.push(product.specialFilterProps[filterName]);
+                const value = product.specialFilterProps[filterName];
+                if (value && !options.includes(value)) {
+                    options.push(value);
                 }
             });
         return options;
@@ -73,7 +71,11 @@ export default function FilteringOption({
         return options;
     };
 
-    const handleCheckboxChange = (e, option: string) => {
+    const handleCheckboxChange = (
+        e: React.FormEvent<HTMLInputElement>,
+        option: string
+    ) => {
+        const target = e.target as HTMLInputElement;
         for (let key of param.keys()) {
             console.log(key + ":" + param.get(key));
         }
@@ -91,7 +93,7 @@ export default function FilteringOption({
 
         let dataToModify = param.get(filterNameLowCase);
 
-        if (e.target.checked) {
+        if (target.checked) {
             setParam((prev) => {
                 console.log(
                     "?" +
@@ -163,6 +165,7 @@ export default function FilteringOption({
         }, 100);
 
         return () => clearTimeout(timeout);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [price]);
 
     return (

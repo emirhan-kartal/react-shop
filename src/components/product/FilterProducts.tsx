@@ -86,7 +86,7 @@ export default function FilterProducts() {
                             conditionArray.push(
                                 urlParams
                                     .get(key)
-                                    ?.includes(productFilterProps[key])
+                                    ?.includes(productFilterProps[key] || '')
                                     ? true
                                     : false
                             );
@@ -176,6 +176,7 @@ export default function FilterProducts() {
     }, [ordering]);
     useEffect(() => {
         setFilteredProducts(filteringProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[urlParams])
     return (
         <>

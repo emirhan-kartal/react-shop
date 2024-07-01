@@ -3,8 +3,15 @@ import React from "react";
 import QuantityTracker from "../QuantityTracker";
 import { useDispatch } from "react-redux";
 import { removeReduce, addProduct } from "../../redux/reducers/cartSlice";
+import { Product } from "components/Interfaces";
 
-export default function ProductCardCart({ productInstance, count }) {
+interface ProductCardCartProps {
+    productInstance:Product;
+    count:number;
+}
+
+
+export default function ProductCardCart({ productInstance, count }: ProductCardCartProps) {
     const dispatch = useDispatch();
     return (
         <Card

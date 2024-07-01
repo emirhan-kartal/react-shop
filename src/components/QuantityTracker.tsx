@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, InputAdornment, TextField, Typography } from "@mui/material";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Box, InputAdornment, TextField } from "@mui/material";
 import { ReactIcon } from "./ReactIcon";
 import SnackbarDisplay from "./SnackbarDisplay";
 import { Product } from "./Interfaces";
@@ -12,7 +11,7 @@ import { Product } from "./Interfaces";
 //////////////////////////////////////////////////
 interface QuantityTrackerProps {
     count: number;
-    addProduct: (event) => void;
+    addProduct: (event:React.MouseEvent) => void;
     removeReduce: () => void;
     height?: number;
     width?: number | string;

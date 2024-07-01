@@ -1,15 +1,19 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-export default function HorizontalScroll({ children }) {
+export default function HorizontalScroll({
+    children,
+}: {
+    children: JSX.Element[];
+}) {
     return (
         <Box
             sx={{
                 display: "flex",
                 overflowX: "scroll",
                 gap: 3,
-                py:3,
-                px:{xs:4,md:2},
+                py: 3,
+                px: { xs: 4, md: 2 },
                 "&::-webkit-scrollbar": {
                     display: "none",
                 },

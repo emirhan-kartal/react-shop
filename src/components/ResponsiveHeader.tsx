@@ -3,17 +3,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
-import { useState } from "react";
-
 import React from "react";
 
 import { Outlet } from "react-router-dom";
 import NavMenu from "./header/NavMenu";
 import CartPopUp from "./header/CartPopUp";
 import UserMenu from "./header/UserMenu";
-
-const pages: String[] = ["Products", "Pricing", "Blog"];
 
 function ResponsiveHeader() {
     return (
@@ -58,7 +53,7 @@ function ResponsiveHeader() {
                             REACT
                         </Typography>
 
-                        <Box sx={{ display: "flex",gap:1}}>
+                        <Box sx={{ display: "flex", gap: 1 }}>
                             <CartPopUp />
 
                             <UserMenu />

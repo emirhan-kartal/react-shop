@@ -1,9 +1,16 @@
 import { Box, Grid, Skeleton, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import SkeletonAnimation from "./SkeletonAnimation";
 
-export default function CategoryCard({ src, text, redirect }) {
+interface CategoryCardProps {
+    src: string;
+    text: string;
+    redirect: string;
+
+}
+
+export default function CategoryCard({ src, text, redirect }: CategoryCardProps) {
     const [loaded, setLoaded] = React.useState<boolean>(false);
     return (
         <Grid item xs={12} sm={6} sx={{ cursor: "pointer" }} height={"100%"}>

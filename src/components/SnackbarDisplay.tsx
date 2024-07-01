@@ -6,7 +6,7 @@ interface SnackbarDisplayProps {
     setOpen: (open: boolean) => void;
 }
 
-const colors = { error: "red", success: "green", warning: "yellow" };
+const colors:{[key:string]:string} = { error: "red", success: "green", warning: "yellow" };
 
 export default function SnackbarDisplay({
     options,

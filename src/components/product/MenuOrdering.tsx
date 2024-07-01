@@ -5,7 +5,15 @@ import Typography from "@mui/material/Typography";
 import { MenuList } from "@mui/material";
 import useOutsideClick from "../hooks/useOutsideClick";
 
-export default function MenuOrdering({ setOpen, open, setOrdering, ordering }) {
+interface MenuOrderingProps {
+    setOpen: React.Dispatch<React.SetStateAction<number>>;
+    open: boolean;
+    setOrdering: React.Dispatch<React.SetStateAction<number>>;
+    ordering: number;
+
+}
+
+export default function MenuOrdering({ setOpen, open, setOrdering, ordering }: MenuOrderingProps) {
     const ref = useOutsideClick(() => setOpen(-1), open);
 
 /*     function a11yProps(index: number) {

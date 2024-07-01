@@ -33,7 +33,7 @@ export default function CartPage() {
                         productInstance={{
                             ...item.productInstance,
                         }}
-                        count={item.count}
+                        count={item.count || 1}
                     />
                 </Grid>
             ))}
