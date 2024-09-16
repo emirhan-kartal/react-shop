@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# React Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple e-commerce application built with React, TypeScript, Material-UI, and Redux.
 
-## Available Scripts
+## About the Project
 
-In the project directory, you can run:
+The React Shop project is a simple e-commerce application that allows users to browse a catalog of products, add items to their shopping cart, and view their cart contents. The application is designed to be responsive, meaning it can be accessed and used on a variety of devices, including desktops, laptops, tablets, and smartphones.
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Product Catalog**: The application displays a list of products, which can be filtered and sorted by various criteria such as price, category, and rating.
+* **Shopping Cart**: Users can add items to their shopping cart, and view their cart contents.
+* **Responsive Design**: The application is designed to be responsive, meaning it can be accessed and used on a variety of devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Challenges
 
-### `npm test`
+One of the most challenging parts of this project was implementing the product filtering feature. I had to design a system that would allow users to filter products by multiple criteria, such as price, category, and rating, while also ensuring that the filtering process was efficient and scalable. To achieve this, I used a combination of React state management and Redux to manage the filtering criteria and update the product list accordingly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+* React
+* TypeScript
+* Material-UI
+* Redux
+* JavaScript
+* HTML/CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Methodologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Component-based architecture
+* Redux for state management
+* TypeScript for type safety and code maintainability
+* Material-UI for UI components and styling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+1. Clone the repository: `git clone https://github.com/emirhan-kartal/react-shop.git`
+2. Install dependencies: `npm install`
+3. Start the application: `npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
