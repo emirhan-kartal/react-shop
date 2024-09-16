@@ -63,18 +63,23 @@ export default function ProductCard({
             sm={6}
             md={4}
             lg={3}
-            flexDirection={type === "cart" || type==="cart-page" ? "row" : "column"}
+            flexDirection={
+                type === "cart" || type === "cart-page" ? "row" : "column"
+            }
             justifySelf={"center"}
             sx={{ position: "relative" }}
             flexShrink={0}
         >
             <ConditionalLink
-                condition={(type !== "cart" && type !== "cart-page") && loaded}
+                condition={type !== "cart" && type !== "cart-page" && loaded}
                 to={`/product/${id}`}
             >
                 <Card
                     sx={{
-                        height: type === "cart" || type === "cart-page" ? 130 : "auto",
+                        height:
+                            type === "cart" || type === "cart-page"
+                                ? 130
+                                : "auto",
                         width: type === "cart" ? 300 : "auto",
                         bgcolor: "white",
                         border: "1px solid lightgray",
@@ -82,7 +87,10 @@ export default function ProductCard({
                 >
                     <CardContent
                         sx={{
-                            display: type === "cart" || type==="cart-page" ? "flex" : "static",
+                            display:
+                                type === "cart" || type === "cart-page"
+                                    ? "flex"
+                                    : "static",
                             gap: type === "cart" ? 1 : 2,
                             height: "100%",
                             padding: 2,

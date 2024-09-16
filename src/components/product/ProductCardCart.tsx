@@ -20,6 +20,7 @@ export default function ProductCardCart({ productInstance, count }: ProductCardC
                 gap: 1,
                 ml: "auto",
                 border: "2px solid lightgray",
+                p:2
             }}
         >
             <CardMedia

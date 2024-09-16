@@ -15,13 +15,13 @@ export default function useSnackbarMessage(
 
     const [open, setOpen] = useState(false);
 
-    const handleSnackbarClose = (event, reason) => {
+    const handleSnackbarClose = (event:React.SyntheticEvent|Event, reason:string) => {
         if (reason === "clickaway") {
             return;
         }
         setOpen(false);
     };
-    const activate = (msg, newBgColor, autoHideDuration = 2000) => {
+    const activate = (msg:string, newBgColor:string, autoHideDuration = 2000) => {
         setProperties({ message: msg, bgcolor: newBgColor, autoHideDuration });
         setOpen(true);
     };

@@ -15,12 +15,18 @@ export default function ProductDetail({ product, isMdUp }: ProductDetailProps) {
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
+
     useEffect(() => {
         if (isMdUp) {
             setValue(0);
             console.log("test");
         }
     }, [isMdUp]);
+
+    if (!product) {
+        return null; // Explicitly return null if product is not defined
+    }
+
     const productInfoContent = (
         <Box
             sx={{
@@ -34,9 +40,11 @@ export default function ProductDetail({ product, isMdUp }: ProductDetailProps) {
             {Object.keys(product.productInfo).map((key, index) => {
                 if (key === "reviews") {
                     const reviews: Review[] = product.productInfo[key];
-                    const reviewElements = reviews.map((review: Review, index: number) => (
-                        <ReviewDisplay key={index} review={review} />
-                    ));
+                    const reviewElements = reviews.map(
+                        (review: Review, index: number) => (
+                            <ReviewDisplay key={index} review={review} />
+                        )
+                    );
                     return (
                         <ProductInfoContent
                             key={index}
@@ -57,33 +65,35 @@ export default function ProductDetail({ product, isMdUp }: ProductDetailProps) {
             })}
         </Box>
     );
-    if (!isMdUp && value === 0) {
-        setValue(-1);
-    } else if (!isMdUp) {
-        return productInfoContent;
-    } else if (value !== -1) {
-        const toReturn = (
-            <Box
-                sx={{
-                    width: "100%",
-                    bgcolor: "background.paper",
-                    display: { xs: "none", md: "block" },
-                }}
-            >
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="fullWidth"
-                    centered
-                >
-                    <Tab label="Details" />
-                    <Tab label="Reviews" />
-                    <Tab label="Shipping" />
-                    <Tab label="Returns" />
-                </Tabs>
-                {productInfoContent}
-            </Box>
-        );
-        return toReturn;
+
+    if (!isMdUp) {
+        if (value === 0) {
+            setValue(-1);
+        } else {
+            return productInfoContent;
+        }
     }
+
+    return (
+        <Box
+            sx={{
+                width: "100%",
+                bgcolor: "background.paper",
+                display: { xs: "none", md: "block" },
+            }}
+        >
+            <Tabs
+                value={value}
+                onChange={handleChange}
+                variant="fullWidth"
+                centered
+            >
+                <Tab label="Details" />
+                <Tab label="Reviews" />
+                <Tab label="Shipping" />
+                <Tab label="Returns" />
+            </Tabs>
+            {productInfoContent}
+        </Box>
+    );
 }

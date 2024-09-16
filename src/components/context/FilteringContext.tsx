@@ -10,7 +10,7 @@ const FilteringContext = createContext<FilteringContextType>({
     setFilter: () => {},
 });
 
-export function FilteringProvider({ children }) {
+export function FilteringProvider({ children }: { children: React.ReactNode}) {
     const [filter, setFilter] = React.useState({});
     return (
         <FilteringContext.Provider value={{ filter, setFilter }}>

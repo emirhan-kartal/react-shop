@@ -11,7 +11,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function NavMenu() {
-    const pages = ["Men ", "Women", "Kids", "Accessories", "Sale", "New", "Blog"];
+    const pages: { [key: string]: string } = {
+        Men: "/products/men",
+        Women: "/products/women",
+        Kids: "/products/kids",
+        Accessories: "/products/accessories",
+        Sale: "/products/sale",
+        New: "/products/new",
+        Blog: "/blog",
+    };
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
         null
     );
@@ -23,11 +31,12 @@ export default function NavMenu() {
         setAnchorElNav(null);
     };
 
-    const pageLinks:{[key:string]:string} = {
-        Home: "/",
-        About: "/about",
-        Services: "/services",
-        Contact: "/contact",
+    const pageLinks: any = {
+        men: "/products/men",
+        home: "/",
+        about: "/about",
+        services: "/services",
+        contact: "/contact",
     };
 
     return (
@@ -66,9 +75,11 @@ export default function NavMenu() {
                         display: { xs: "block", md: "none" },
                     }}
                 >
-                    {pages.map((page, index) => (
+                    {Object.keys(pages).map((page, index) => (
                         <MenuItem key={index} onClick={handleCloseNavMenu}>
-                            <Typography textAlign="center">{page}</Typography>
+                            <Typography textAlign="center">
+                                {pages[page]}
+                            </Typography>
                         </MenuItem>
                     ))}
                 </Menu>
@@ -80,21 +91,23 @@ export default function NavMenu() {
                     justifyContent: "flex-end",
                 }}
             >
-                {pages.map((page, index) => (
-                    <Link to={pageLinks[page]}>
-                        <Button
-                            key={index}
-                            onClick={handleCloseNavMenu}
-                            sx={{
-                                my: 2,
-                                color: "white",
-                                display: "block",
-                            }}
-                        >
-                            {page}
-                        </Button>
-                    </Link>
-                ))}
+                {Object.keys(pages).map((page, index) => {
+
+                    return (
+                        <Link to={pages[page]}>
+                            <Button
+                                key={index}
+                                sx={{
+                                    my: 2,
+                                    color: "white",
+                                    display: "block",
+                                }}
+                            >
+                                {page}
+                            </Button>
+                        </Link>
+                    );
+                })}
             </Box>
         </>
     );

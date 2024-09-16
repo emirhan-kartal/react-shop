@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export default function useOutsideClick(callback,state: boolean) {
+export default function useOutsideClick(callback:() => void,state: boolean) {
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {

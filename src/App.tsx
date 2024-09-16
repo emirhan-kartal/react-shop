@@ -14,6 +14,8 @@ import BackToTop from "./components/BackToTop";
 import FilterProducts from "./components/product/FilterProducts";
 import { FilteringProvider } from "./components/context/FilteringContext";
 import CartPage from "./pages/CartPage";
+import AddressForm from "./pages/AddressForm";
+import CreditCardForm from "./pages/CreditCardForm";
 function App() {
     useEffect(() => {
         redirect("/home");
@@ -60,6 +62,26 @@ function App() {
                 <>
                     <ResponsiveHeader />
                     <CartPage />
+                    <Footer />
+                </>
+            ),
+        },
+        {
+            path: "/cart/address",
+            element: (
+                <>
+                    <ResponsiveHeader />
+                    <AddressForm />
+                    <Footer />
+                </>
+            ),
+        },
+        {
+            path: "/cart/payment",
+            element: (
+                <>
+                    <ResponsiveHeader />
+                    <CreditCardForm />
                     <Footer />
                 </>
             ),

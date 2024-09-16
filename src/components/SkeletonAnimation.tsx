@@ -11,9 +11,10 @@ interface SkeletonAnimationProps {
     callback?: () => void;
 }
 interface sxType {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     [key: string]: any;
 }
+
 export default function SkeletonAnimation({
     children,
     variant,
@@ -24,7 +25,8 @@ export default function SkeletonAnimation({
     callback,
 }: SkeletonAnimationProps) {
     const Child = React.Children.only(children);
-    if (React.isValidElement(Child) === false) {
+
+    if (!React.isValidElement(Child)) {
         throw new Error("SkeletonAnimation only accepts a single child");
     }
 
@@ -37,9 +39,10 @@ export default function SkeletonAnimation({
 
     const { image, component, display, bgcolor, ...pureSkeletonJson } =
         skeletonJson;
+    let purestSkeletonJson = pureSkeletonJson;
     if (pureSkeletonJson.sx && pureSkeletonJson.sx.hasOwnProperty("bgcolor")) {
-        var { bgcolor: pureBgColor, ...purestSkeletonJson } =
-            pureSkeletonJson.sx;
+        var { bgcolor: pureBgColor, ...restSkeletonJson } = pureSkeletonJson.sx;
+        purestSkeletonJson = restSkeletonJson;
     }
 
     const handleLoad = () => {
@@ -48,6 +51,7 @@ export default function SkeletonAnimation({
             if (callback) callback();
         }, 2000);
     };
+
     const Component = Child.type;
     return (
         <>

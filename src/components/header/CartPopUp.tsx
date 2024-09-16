@@ -13,6 +13,7 @@ import config from "../Config";
 import ProductCard from "../product/ProductCard";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/reducers/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPopUp() {
     const cart = useSelector(selectCart);
@@ -23,6 +24,7 @@ export default function CartPopUp() {
     const handleCloseCartMenu = () => {
         setAnchorElCart(null);
     };
+    const navigate = useNavigate();
 
     return (
         <>
@@ -101,7 +103,7 @@ export default function CartPopUp() {
                     <MenuItem>
                         Total:{" "}
                         {cart &&
-                            cart
+                            ((cart
                                 .reduce(
                                     (total, product) =>
                                         total +
@@ -109,13 +111,16 @@ export default function CartPopUp() {
                                             (product.count || 0),
                                     0
                                 )
-                                .toFixed(1) +
-                                config.shipping_cost +
+                                ) +
+                                config.shipping_cost).toFixed(2) +
                                 " " +
                                 config.currency_symbol}
                     </MenuItem>
                     <MenuItem sx={{ width: "100%" }}>
-                        <Button variant="contained" fullWidth>
+                        <Button variant="contained" fullWidth onClick={()=> {
+                            navigate("/cart")
+                            setAnchorElCart(null)
+                        }}>
                             Checkout
                         </Button>
                     </MenuItem>

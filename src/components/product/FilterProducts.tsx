@@ -127,49 +127,55 @@ export default function FilterProducts() {
     useEffect(() => {   
         console.log("ordering changed")
         let filteredProductsClone = [...filteredProducts];
-        if (ordering === 1) {
-            filteredProductsClone.sort((a, b) => {
-                const priceA = a.props.productInstance.onDiscount
-                    ? a.props.productInstance.discountPrice!
-                    : a.props.productInstance.price;
-                const priceB = b.props.productInstance.onDiscount
-                    ? b.props.productInstance.discountPrice!
-                    : b.props.productInstance.price;
-                return priceA - priceB;
-            });
-        } else if (ordering === 2) {
-            filteredProductsClone.sort((a, b) => {
-                const priceA = a.props.productInstance.onDiscount
-                    ? a.props.productInstance.discountPrice!
-                    : a.props.productInstance.price;
-                const priceB = b.props.productInstance.onDiscount
-                    ? b.props.productInstance.discountPrice!
-                    : b.props.productInstance.price;
-                return priceB - priceA;
-            });
-        } else if (ordering === 3) {
-            filteredProductsClone.sort((a, b) => {
-                const dateA = new Date(a.props.productInstance.date);
-                const dateB = new Date(b.props.productInstance.date);
-                return dateB.getTime() - dateA.getTime();
-            });
-        } else if (ordering === 4) {
-            filteredProductsClone.sort((a, b) => {
-                const dateA = new Date(a.props.productInstance.date);
-                const dateB = new Date(b.props.productInstance.date);
-                return dateA.getTime() - dateB.getTime();
-            });
-        } else if (ordering === 0) {
-            let unsortedProducts: JSX.Element[] = [];
-            productIDs.current.forEach((id) => {
-                const product = filteredProducts.find(
-                    (product) => product.props.productInstance.id === id
-                );
-                if (product !== undefined) {
-                    unsortedProducts.push(product);
-                }
-            });
-            filteredProductsClone = unsortedProducts;
+        switch (ordering) {
+            case 1:
+                filteredProductsClone.sort((a, b) => {
+                    const priceA = a.props.productInstance.onDiscount
+                        ? a.props.productInstance.discountPrice!
+                        : a.props.productInstance.price;
+                    const priceB = b.props.productInstance.onDiscount
+                        ? b.props.productInstance.discountPrice!
+                        : b.props.productInstance.price;
+                    return priceA - priceB;
+                });
+                break;
+            case 2:
+                filteredProductsClone.sort((a, b) => {
+                    const priceA = a.props.productInstance.onDiscount
+                        ? a.props.productInstance.discountPrice!
+                        : a.props.productInstance.price;
+                    const priceB = b.props.productInstance.onDiscount
+                        ? b.props.productInstance.discountPrice!
+                        : b.props.productInstance.price;
+                    return priceB - priceA;
+                });
+                break;
+            case 3:
+                filteredProductsClone.sort((a, b) => {
+                    const dateA = new Date(a.props.productInstance.date);
+                    const dateB = new Date(b.props.productInstance.date);
+                    return dateB.getTime() - dateA.getTime();
+                });
+                break;
+            case 4:
+                filteredProductsClone.sort((a, b) => {
+                    const dateA = new Date(a.props.productInstance.date);
+                    const dateB = new Date(b.props.productInstance.date);
+                    return dateA.getTime() - dateB.getTime();
+                });
+                break;
+            case 0:
+                let unsortedProducts: JSX.Element[] = [];
+                productIDs.current.forEach((id) => {
+                    const product = filteredProducts.find(
+                        (product) => product.props.productInstance.id === id
+                    );
+                    if (product !== undefined) {
+                        unsortedProducts.push(product);
+                    }
+                });
+                filteredProductsClone = unsortedProducts;
+                break;
         }
         setFilteredProducts(filteredProductsClone);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -177,7 +183,7 @@ export default function FilterProducts() {
     useEffect(() => {
         setFilteredProducts(filteringProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[urlParams])
+    },[routerParams.category])
     return (
         <>
             <Box

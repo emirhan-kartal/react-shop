@@ -45,5 +45,5 @@ export default function ProductInfoContent({
                 />{" "}
             </Box>
         );
-    }
+    } else return null;
 }
